@@ -3,14 +3,24 @@
 <!-- here, we are replacing the contents of the head tag from the head in the fragments file -->
 <head th:replace="fragments :: head"></head>
 <body>
-    <h1 th:text="${title}">My Cheeses</h1>
+    <h1 th:text="${title}">Remove Cheese</h1>
     <nav th:replace="fragments :: navigation"></nav>
 <!-- create a conditional response if no cheese is listed in the array that is being accessed. -->
     <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
 <!-- create a button that links back to the add cheese form <a href="/cheese/add">Add Cheese</a> replaced with fragment and moved below title-->
 <!-- create a Thymeleaf for loop that iterates through each of the elements in the array and creates an unordered list item for each one. -->
-<ul th:each="cheese : ${cheeses}">
-    <li th:text="${cheese.key + ': ' + cheese.value}">Key</li>
-</ul>
+
+<!--    <ul th:each="cheese : ${cheeses}">-->
+<!--        <li th:text="${cheese.key + ': ' + cheese.value}">Key</li>-->
+<!--    </ul>-->
+    <form method="post">
+
+        <label th:each="cheese : ${cheeses}">
+        <input type="checkbox" th:name="cheeses" th:value="${cheese.key}" />
+        <a th:text="${cheese.key + ' : ' + cheese.value}">Cheese key and value</a>
+        </label>
+    </form>
+    <input type="submit" value="Remove Cheese" />
+
 </body>
 </html>

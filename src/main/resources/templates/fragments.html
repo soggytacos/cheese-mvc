@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- This file contains chunks of HTML that we want to borrow in other places -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Title</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <script type ="text/javascript" th:src="@{/js/script.js}"></script>
+
+</head>
+<body>
+<!-- This is a navigation fragment that will be used in other templates. -->
+<nav th:fragment="navigation">
+    <a href="/cheese">List</a>
+    <a href="/cheese/add">Add</a>
+    <a href="/cheese/remove">Remove</a>
+</nav>
+
+</body>
+</html>
