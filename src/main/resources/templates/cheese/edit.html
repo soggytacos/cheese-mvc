@@ -10,26 +10,25 @@
 
 <!-- if the action (action="/cheese/new") attribute is not included in the form after the method attribute
 the default action is to submit the form to the same url as the current form -->
-<!--this is where the "skeleton" of the cheese object resides. -->
-<form method="post" style="max-width:600px" th:object="${cheese}">
+<form method="post" style="max-width:600px" th:object="${cheeseToEdit}">
     <div class="form-group">
         <label th:for="name">Name</label>
-<!--        the *{name} & *{description} fields uses the name of the currently scoped object ${cheese}-->
-        <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
+        <input class="form-control" th:field="*{name}" th:value="${cheeseToEdit.name}"/>
+        <span th:errors="*{name}" class="errors" ></span>
     </div>
     <div class="form-group">
-        <label th:for="description">Name</label>
-        <input class="form-control" th:field="*{description}" />
-        <span th:errors="*{description}" class="error"></span>
+        <label th:for="description">Description</label>
+        <input class="form-control" th:field="*{description}" th:value="${cheeseToEdit.description}"/>
+        <span th:errors="*{description}" class="errors" ></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" >
         <label th:for="type">Type</label>
-    <select th:field="*{type}">
-        <option th:each="cheeseType : ${cheeseTypes}" th:text="${cheeseType.name}" th:value="${cheeseType}"></option>
-    </select>
+        <select th:field="*{type}" >
+            <option th:each="cheeseType : ${cheeseTypes}" th:text="${cheeseType.name}" th:value="${cheeseType}"></option>
+        </select>
     </div>
-    <input type="submit" value="Add Cheese" />
+    <input type="hidden" th:value="${cheeseToEdit.cheeseId}" name="cheeseId" />
+    <input type="submit" value="Edit Cheese" />
 </form>
 
 </body>

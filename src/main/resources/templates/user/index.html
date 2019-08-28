@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!-- here, we are replacing the contents of the head tag from the head in the fragments file -->
+
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+<h1 th:text="${title}">Default Title</h1>
+<!--adding a fragment from the fragments file for navigation buttons-->
+<nav th:replace="fragments :: navigation"></nav>
+
+<!-- if the action (action="/cheese/new") attribute is not included in the form after the method attribute
+the default action is to submit the form to the same url as the current form -->
+<h3 th:text="${'Welcome ' + userName + '!'}"></h3>
+
+</body>
+</html>

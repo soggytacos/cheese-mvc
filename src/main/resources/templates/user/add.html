@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!-- here, we are replacing the contents of the head tag from the head in the fragments file -->
+
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+<h1 th:text="${title}">Default Title</h1>
+<!--adding a fragment from the fragments file for navigation buttons-->
+<nav th:replace="fragments :: navigation"></nav>
+
+<!-- if the action (action="/cheese/new") attribute is not included in the form after the method attribute
+the default action is to submit the form to the same url as the current form -->
+<h3 th:text="${passwordMessage}" style="color:red;"></h3>
+<form method="post" style="max-width:600px">
+    <div class="form-group">
+        <label for="username-field">Username</label>
+        <input class="form-control" id="username-field" type="text" name="username" th:value="${userName}"/>
+    </div>
+    <div class="form-group">
+        <label for="email-field">Email</label>
+        <input class="form-control" id="email-field" type="email" name="email" th:value="${email}"/>
+    </div>
+    <div class="form-group">
+        <label for="password-field">Password</label>
+        <input class="form-control" id="password-field" type="password" name="password" />
+    </div>
+    <div class="form-group">
+        <label for="verify-field">Verify Password</label>
+        <input class="form-control" id="verify-field" type="password" name="verify" />
+    </div>
+    <input type="submit" value="Create User" />
+</form>
+
+</body>
+</html>
