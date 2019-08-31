@@ -87,7 +87,7 @@ public class CheeseController {
 
         return "cheese/edit";
     }
-
+//test
     @RequestMapping(value = "edit/{cheeseId}" , method = RequestMethod.POST)
     public String processEditForm(int cheeseId, String name, String description, CheeseType type, int rating) {
         Cheese cheeseToEdit = CheeseData.getById(cheeseId);
