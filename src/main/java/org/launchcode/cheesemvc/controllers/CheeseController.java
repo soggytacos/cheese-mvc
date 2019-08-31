@@ -96,7 +96,7 @@ public class CheeseController {
         cheeseToEdit.setType(type);
         cheeseToEdit.setRating(rating);
 
-        return "redirect:/";
+        return "redirect:/cheese";
     }
 
 
