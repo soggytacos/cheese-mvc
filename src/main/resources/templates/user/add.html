@@ -10,23 +10,26 @@
 
 <!-- if the action (action="/cheese/new") attribute is not included in the form after the method attribute
 the default action is to submit the form to the same url as the current form -->
-<h3 th:text="${passwordMessage}" style="color:red;"></h3>
-<form method="post" style="max-width:600px">
+<form method="post" style="max-width:600px" th:object="${user}">
     <div class="form-group">
-        <label for="username-field">Username</label>
-        <input class="form-control" id="username-field" type="text" name="username" th:value="${userName}"/>
+        <label th:for="username">Username</label>
+        <input class="form-control" th:field="*{username}"/>
+        <span th:errors="*{username}" class="error"></span>
     </div>
     <div class="form-group">
-        <label for="email-field">Email</label>
-        <input class="form-control" id="email-field" type="email" name="email" th:value="${email}"/>
+        <label th:for="email">Email</label>
+        <input class="form-control" type="email" th:field="*{email}"/>
+        <span th:errors="*{email}" class="error"></span>
     </div>
     <div class="form-group">
-        <label for="password-field">Password</label>
-        <input class="form-control" id="password-field" type="password" name="password" />
+        <label th:for="password">Password</label>
+        <input class="form-control" type="password" placeholder="make sure it's complex" th:field="*{password}" />
+        <span th:errors="*{password}" class="error"></span>
     </div>
     <div class="form-group">
         <label for="verify-field">Verify Password</label>
-        <input class="form-control" id="verify-field" type="password" name="verify" />
+        <input class="form-control" id="verify-field" placeholder="and that they match" type="password" name="verify" />
+        <span th:text="${passwordMessage}" style="color:red;"></span>
     </div>
     <input type="submit" value="Create User" />
 </form>

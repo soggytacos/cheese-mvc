@@ -15,12 +15,14 @@
         <th>Name</th>
         <th>Description</th>
         <th>Type</th>
+        <th>Rating</th>
     </tr>
     <tr th:each="cheese : ${cheeses}">
         <td><a th:href="@{'/cheese/edit/' + ${cheese.cheeseId}}">edit</a></td>
         <td th:text="${cheese.name}">Key</td>
         <td th:text="${cheese.description}">Value</td>
         <td th:text="${cheese.type.name}"></td>
+        <td th:text="${cheese.rating}"></td>
     </tr>
 </table>
 </body>

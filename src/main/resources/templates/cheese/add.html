@@ -29,6 +29,17 @@ the default action is to submit the form to the same url as the current form -->
         <option th:each="cheeseType : ${cheeseTypes}" th:text="${cheeseType.name}" th:value="${cheeseType}"></option>
     </select>
     </div>
+    <div class="form-group">
+        <label th:for="rating">Rating (1-5)</label><br>
+
+        <input th:field="*{rating}" type="radio" value=1> 1
+        <input th:field="*{rating}" type="radio" value=2> 2
+        <input th:field="*{rating}" type="radio" value=3> 3
+        <input th:field="*{rating}" type="radio" value=4> 4
+        <input th:field="*{rating}" type="radio" value=5> 5
+
+        <span th:errors="*{rating}" class="error"></span>
+    </div>
     <input type="submit" value="Add Cheese" />
 </form>
 
